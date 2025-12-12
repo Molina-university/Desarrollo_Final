@@ -84,7 +84,6 @@ Navega a http://localhost:5173 🎉
 ---
 
 # 📁 Estructura del Proyecto
-
 ```
 gestion-libros-vue/
 ├── 📂 public/              # Archivos estáticos
@@ -119,35 +118,44 @@ gestion-libros-vue/
 ├── package.json
 ├── README.md
 └── vite.config.js
+
 ```
 
 # 🛠️ Tecnologías Utilizadas
-
+Frontend        
+```
+Tecnología            Versión                  Uso
+Vue.js               3.4.x                Framework principal
+Vue                  Router4.2.x          Enrutamiento SPA
+Bootstrap            5.3.x                Framework CSS
+Bootstrap            Icons1.11.x          IconografíaAxios1.6.xCliente HTTP
+```
 Backend (MockAPI)
 
 MockAPI: REST API simulada para desarrollo
 Endpoints: /Libros, /usuarios, /clientes, /valoraciones
 
-Herramientas de Desarrollo
+- Herramientas de Desarrollo
 
 Vite: Build tool y dev server ultra-rápido
 ESLint: Linter para mantener código limpio
 Git: Control de versiones
 
 
-🎯 Funcionalidades Detalladas
-🔐 Autenticación
+# 🎯 Funcionalidades Detalladas
+## 🔐 Autenticación
+```  
 javascript// Login de ejemplo
 Email: admin@libreria.com
 Password: admin123
-
+``` 
 Validación de credenciales
 Almacenamiento seguro en localStorage
 Redirección automática
 Guards de navegación
 
-📚 Gestión de Libros
-Campos de libro:
+# 📚 Gestión de Libros
+## Campos de libro:
 
 Título
 Autor
@@ -158,21 +166,21 @@ ISBN
 Descripción
 Imagen (URL)
 
-Operaciones:
+## Operaciones:
 
 ✅ CREATE: Agregar nuevos libros
 ✅ READ: Listar y ver detalles
 ✅ UPDATE: Editar información
 ✅ DELETE: Eliminar con confirmación
 
-👥 Gestión de Usuarios
+## 👥 Gestión de Usuarios
 
 CRUD completo
 Roles: Admin, Usuario, Cliente
 Validación de emails
 Passwords encriptados (simulado)
 
-🎨 Interfaz de Usuario
+## 🎨 Interfaz de Usuario
 Características UX:
 
 Diseño mobile-first responsivo
@@ -183,7 +191,8 @@ Error handling
 Breadcrumbs de navegación
 
 
-📝 Scripts Disponibles
+# 📝 Scripts Disponibles
+``` 
 bash# Desarrollo
 npm run dev          # Inicia servidor de desarrollo
 
@@ -194,34 +203,50 @@ npm run preview      # Previsualiza build de producción
 # Calidad de Código
 npm run lint         # Ejecuta ESLint
 npm run format       # Formatea código con Prettier
+``` 
 
-🔗 API Endpoints
+# 🔗 API Endpoints
 Base URL
+``` 
 https://693b82a19b80ba7262cd7d2c.mockapi.io/api/v1
 Libros
-MétodoEndpointDescripciónGET/LibrosObtener todos los librosGET/Libros/:idObtener un libro específicoPOST/LibrosCrear nuevo libroPUT/Libros/:idActualizar libroDELETE/Libros/:idEliminar libro
+``` 
+
+``` 
+-------------------------------------------------------
+Método     |     Endpoint      |    Descripción
+-------------------------------------------------------
+GET/       |     /Libros       |   Obtener todos los libros
+-------------------------------------------------------
+GET        |     /Libros/:id   |   Obtener un libro específico
+-------------------------------------------------------
+POST       |     /Libros        |   Crear nuevo libro
+-------------------------------------------------------
+PUT        |     /Libros/:id     |    Actualizar libro
+-------------------------------------------------------
+DELETE     |     /Libros/:id     |    Eliminar libro
+-------------------------------------------------------
+```
+```
+-------------------------------------------------------
 Usuarios
-MétodoEndpointDescripciónGET/usuariosObtener todos los usuariosPOST/usuariosCrear nuevo usuarioPUT/usuarios/:idActualizar usuarioDELETE/usuarios/:idEliminar usuario
+-------------------------------------------------------
+Método        |    Endpoint        |      Descripción
+-------------------------------------------------------
+GET           |  /usuarios         |     Obtener todos los usuarios
+-------------------------------------------------------
+POST          |   /usuarios        |      Crear nuevo usuario
+-------------------------------------------------------
+PUT           |   /usuarios/:id    |      Actualizar usuario
+-------------------------------------------------------
+DELETE        |   /usuarios/:id    |       Eliminar usuario
+-------------------------------------------------------
+``` 
 
-🎨 Personalización
-Cambiar colores del tema
-Edita el archivo src/assets/styles/Main.css:
-css:root {
-  --color-primary: #007bff;      /* Azul principal */
-  --color-secondary: #6c757d;    /* Gris */
-  --color-success: #28a745;      /* Verde */
-  --color-danger: #dc3545;       /* Rojo */
-}
-Agregar nuevas categorías
-Modifica ProductView.vue:
-vue<select v-model="formulario.category">
-  <option value="Ficción">Ficción</option>
-  <option value="Ciencia">Ciencia</option>
-  <option value="Tu Nueva Categoría">Tu Nueva Categoría</option>
-</select>
-
-🐛 Solución de Problemas
+# 🐛 Solución de Problemas
+```
 Error: "Cannot GET /api/..."
+```
 Solución: Verifica que la URL de MockAPI esté correcta en apiService.js
 Los datos no se cargan
 Solución:
@@ -232,54 +257,31 @@ Asegúrate de que MockAPI esté activo
 
 Error al eliminar o editar
 Solución: Verifica que los IDs sean strings, no números
-javascript// ❌ Incorrecto
+
+❌ Incorrecto
+```
 deleteProduct(123)
+```
+
 
 // ✅ Correcto
+
+```
 deleteProduct("123")
+```
 
-🤝 Contribuir
-¡Las contribuciones son bienvenidas! Si quieres mejorar este proyecto:
-
-Fork el repositorio
-Crea una rama para tu feature (git checkout -b feature/AmazingFeature)
-Commit tus cambios (git commit -m 'Add: nueva funcionalidad increíble')
-Push a la rama (git push origin feature/AmazingFeature)
-Abre un Pull Request
-
-Guías de Contribución
-
-Sigue el estilo de código existente
-Escribe commits descriptivos
-Actualiza la documentación si es necesario
-Añade tests si implementas nuevas funcionalidades
-
-
-📜 Changelog
-[1.0.0] - 2024-12-12
-✨ Agregado
-
-Sistema completo de autenticación
-CRUD de libros con MockAPI
-CRUD de usuarios
-Diseño responsivo con Bootstrap 5
-Paginación de productos
-Sistema de notificaciones Toast
-Modales de confirmación
-
-🐛 Corregido
+## 🐛 Corregido
 
 Error en endpoint de libros (mayúsculas/minúsculas)
 Problema con IDs en operaciones UPDATE/DELETE
 
 
-📄 Licencia
-Este proyecto fue desarrollado con fines educativos para el curso de [Nombre del Curso] en [Universidad].
+## 📄 Licencia
+Este proyecto fue desarrollado con fines educativos para el curso de Ing sistemas en UFPSO.
 Distribuido bajo la Licencia MIT. Ver LICENSE para más información.
 
-👥 Autores
+# 👥 Autores
 Equipo de Desarrollo:
 
-👤 [Nombre Estudiante 1] - GitHub
-👤 [Nombre Estudiante 2] - GitHub
-👤 [Nombre Estudiante 3] - GitHub
+### 👤 [Jhoan Molina Gomez 192490  ] - https://github.com/Molina-university
+### 👤 [Paula Echavez Vargas 192487] - https://github.com/paula8787
