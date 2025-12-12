@@ -3,15 +3,15 @@
     <!-- Breadcrumbs -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><router-link to="/dashboard">🏠 Inicio</router-link></li>
-        <li class="breadcrumb-item active">📚 Libros</li>
+        <li class="breadcrumb-item"><router-link to="/dashboard"><i class="bi bi-house-door-fill"></i> Inicio</router-link></li>
+        <li class="breadcrumb-item active"><i class="bi bi-box-seam-fill"></i> Libros</li>
       </ol>
     </nav>
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2>📚 Gestión de Libros ({{ productos.length }})</h2>
+      <h2><i class="bi bi-box-seam-fill"></i> Gestión de Libros ({{ productos.length }})</h2>
       <button class="btn btn-primary" @click="mostrarModalCrear">
-        ➕ Agregar Libro
+        <i class="bi bi-plus-circle me-2"></i>Agregar Libro
       </button>
     </div>
 
@@ -228,7 +228,8 @@
 
               <div class="d-flex gap-2">
                 <button type="submit" class="btn btn-primary">
-                  {{ modoEdicion ? '✓ Actualizar' : '+ Crear' }}
+                  <i :class="modoEdicion ? 'bi bi-check-circle me-1' : 'bi bi-plus-circle me-1'"></i>
+                  {{ modoEdicion ? 'Actualizar' : 'Crear' }}
                 </button>
                 <button
                   type="button"
@@ -249,7 +250,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">⚠️ Confirmar Eliminación</h5>
+            <h5 class="modal-title"><i class="bi bi-exclamation-triangle-fill me-2"></i>Confirmar Eliminación</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body" v-if="productoAEliminar">

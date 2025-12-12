@@ -3,17 +3,17 @@
     <!-- Breadcrumbs -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">🏠 Inicio</li>
+        <li class="breadcrumb-item active"><i class="bi bi-house-door-fill"></i> Inicio</li>
       </ol>
     </nav>
 
-    <h1 class="mb-4">📚 Bienvenido a la Librería Online</h1>
+    <h1 class="mb-4"><i class="bi bi-book-fill"></i> Bienvenido a la Librería Online</h1>
     
     <!-- Tarjetas de estadísticas -->
     <div class="row g-4 mb-5">
       <div class="col-md-3">
         <div class="stat-card bg-primary-custom text-white">
-          <div class="stat-icon">📚</div>
+          <div class="stat-icon"><i class="bi bi-box-seam-fill"></i></div>
           <div class="stat-info">
             <h3>{{ totalLibros }}</h3>
             <p>Total de Libros</p>
@@ -23,7 +23,7 @@
       
       <div class="col-md-3">
         <div class="stat-card bg-secondary-custom text-white">
-          <div class="stat-icon">📖</div>
+          <div class="stat-icon"><i class="bi bi-tags-fill"></i></div>
           <div class="stat-info">
             <h3>{{ totalCategorias }}</h3>
             <p>Categorías</p>
@@ -33,7 +33,7 @@
       
       <div class="col-md-3">
         <div class="stat-card bg-accent-custom text-white">
-          <div class="stat-icon">👥</div>
+          <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
           <div class="stat-info">
             <h3>{{ totalClientes }}</h3>
             <p>Clientes</p>
@@ -43,7 +43,7 @@
       
       <div class="col-md-3">
         <div class="stat-card bg-dark-custom text-white">
-          <div class="stat-icon">⭐</div>
+          <div class="stat-icon"><i class="bi bi-star-fill"></i></div>
           <div class="stat-info">
             <h3>{{ promedioValoraciones }}</h3>
             <p>Valoración</p>
@@ -54,7 +54,7 @@
 
     <!-- Libros agregados recientemente -->
     <div class="recent-books mb-5" v-if="librosRecientes.length > 0">
-      <h3 class="mb-3">📕 Últimos Libros Agregados</h3>
+      <h3 class="mb-3"><i class="bi bi-clock-history"></i> Últimos Libros Agregados</h3>
       <div class="row g-3">
         <div v-for="libro in librosRecientes" :key="libro.id" class="col-md-4">
           <div class="recent-book-card">
@@ -71,11 +71,11 @@
 
     <!-- Sección de accesos rápidos -->
     <div class="quick-actions mb-5">
-      <h3 class="mb-3">Accesos Rápidos</h3>
+      <h3 class="mb-3"><i class="bi bi-lightning-fill"></i> Accesos Rápidos</h3>
       <div class="row g-3">
         <div class="col-md-4">
           <router-link to="/dashboard/productos" class="action-card">
-            <div class="action-icon">📚</div>
+            <div class="action-icon"><i class="bi bi-box-seam-fill"></i></div>
             <h5>Gestionar Libros</h5>
             <p>Ver, agregar, editar y eliminar libros del catálogo</p>
           </router-link>
@@ -83,7 +83,7 @@
         
         <div class="col-md-4">
           <router-link to="/dashboard/clientes" class="action-card">
-            <div class="action-icon">👥</div>
+            <div class="action-icon"><i class="bi bi-people-fill"></i></div>
             <h5>Gestionar Clientes</h5>
             <p>Administrar la base de datos de clientes</p>
           </router-link>
@@ -91,7 +91,7 @@
         
         <div class="col-md-4">
           <router-link to="/dashboard/valoraciones" class="action-card">
-            <div class="action-icon">⭐</div>
+            <div class="action-icon"><i class="bi bi-star-fill"></i></div>
             <h5>Valoraciones</h5>
             <p>Califica y ve opiniones de nuestros clientes</p>
           </router-link>
@@ -101,7 +101,7 @@
 
     <!-- Información del usuario -->
     <div class="user-info-card">
-      <h4>👤 Información de la sesión</h4>
+      <h4><i class="bi bi-person-circle"></i> Información de la sesión</h4>
       <p><strong>Usuario:</strong> {{ usuario.nombre }}</p>
       <p><strong>Username:</strong> {{ usuario.username }}</p>
       <p><strong>Último acceso:</strong> {{ fechaActual }}</p>

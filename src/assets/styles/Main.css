@@ -1,60 +1,42 @@
-/* ============================================
-   PALETA DE COLORES - LIBRERÍA COLONIAL
-   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Colores principales */
-  --color-primary: #5A0F19;
-  --color-secondary: #8A3119;
-  --color-accent: #945737;
-  --color-light: #EBDACC;
-  --color-dark: #2c1810;
-  
-  /* Variaciones */
-  --color-primary-light: #7a1f29;
-  --color-primary-dark: #3a0a10;
-  --color-secondary-light: #a54929;
-  --color-accent-light: #b57757;
-  
-  /* Colores funcionales */
-  --color-success: #4a7c59;
-  --color-warning: #d97706;
-  --color-danger: #dc2626;
-  --color-info: #0891b2;
-  
-  /* Fondos */
-  --bg-primary: #5A0F19;
-  --bg-secondary: #8A3119;
-  --bg-light: #EBDACC;
-  --bg-dark: #2c1810;
-  --bg-card: #f8f5f2;
-  
-  /* Texto */
-  --text-primary: #2c1810;
-  --text-secondary: #5A0F19;
-  --text-light: #EBDACC;
-  --text-muted: #8b7355;
-  
-  /* Sombras */
-  --shadow-sm: 0 1px 2px rgba(44, 24, 16, 0.1);
-  --shadow-md: 0 4px 6px rgba(44, 24, 16, 0.15);
-  --shadow-lg: 0 10px 15px rgba(44, 24, 16, 0.2);
-  --shadow-xl: 0 20px 25px rgba(44, 24, 16, 0.25);
-  
-  /* Bordes */
-  --border-radius: 8px;
-  --border-radius-lg: 12px;
-  --border-color: rgba(90, 15, 25, 0.15);
-  
-  /* Transiciones */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
-}
+  --color-primary: #2563eb;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1e40af;
 
-/* ============================================
-   ESTILOS GLOBALES
-   ============================================ */
+  --color-secondary: #7c3aed;
+  --color-secondary-light: #8b5cf6;
+  --color-secondary-dark: #6d28d9;
+
+  --color-accent: #06b6d4;
+  --color-accent-light: #22d3ee;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #0891b2;
+
+  --color-light: #f8fafc;
+  --color-dark: #1e293b;
+  --color-text: #334155;
+  --color-text-light: #64748b;
+
+  --bg-body: #f1f5f9;
+  --bg-card: #ffffff;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 * {
   margin: 0;
@@ -63,335 +45,303 @@
 }
 
 body {
-  font-family: 'Segoe UI', 'Georgia', serif;
-  background-color: var(--bg-light);
-  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--color-text);
   line-height: 1.6;
+  font-size: 15px;
 }
 
-/* Títulos */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-secondary);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-dark);
   font-weight: 600;
-  margin-bottom: 1rem;
+  line-height: 1.3;
 }
 
-/* Enlaces */
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
 a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: var(--transition);
 }
 
 a:hover {
   color: var(--color-primary-light);
 }
 
-/* Botones personalizados */
+.btn {
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  border: none;
+  padding: 0.625rem 1.25rem;
+}
+
 .btn-primary {
-  background-color: var(--color-primary) !important;
-  border-color: var(--color-primary) !important;
-  color: var(--text-light) !important;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-light) !important;
-  border-color: var(--color-primary-light) !important;
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
-  background-color: var(--color-secondary) !important;
-  border-color: var(--color-secondary) !important;
-  color: var(--text-light) !important;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+  color: white;
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-secondary-light) !important;
-  border-color: var(--color-secondary-light) !important;
-}
-
-/* Clases de utilidad personalizadas */
-.bg-primary-custom {
-  background-color: var(--color-primary);
-}
-
-.bg-secondary-custom {
-  background-color: var(--color-secondary);
-}
-
-.bg-accent-custom {
-  background-color: var(--color-accent);
-}
-
-.bg-dark-custom {
-  background-color: var(--color-dark);
-}
-
-.text-primary-custom {
-  color: var(--color-primary);
-}
-
-/* Cards con estilo colonial */
-.card {
-  border: none;
-  border-radius: var(--border-radius);
+  background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary) 100%);
+  transform: translateY(-1px);
   box-shadow: var(--shadow-md);
-  background-color: var(--bg-card);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.btn-outline-primary {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.card {
+  background: var(--bg-card);
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
-/* Scrollbar personalizado */
+.card-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+}
+
+.form-control,
+.form-select {
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: 0.625rem 1rem;
+  transition: var(--transition);
+  font-size: 0.9375rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  outline: none;
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.table {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.table thead {
+  background: linear-gradient(135deg, var(--color-light) 0%, #e2e8f0 100%);
+  color: var(--color-dark);
+  font-weight: 600;
+}
+
+.table tbody tr {
+  transition: var(--transition);
+}
+
+.table-hover tbody tr:hover {
+  background-color: var(--color-light);
+}
+
+.modal-content {
+  border: none;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+}
+
+.modal-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1.25rem 1.5rem;
+}
+
+.modal-footer {
+  border-top: 1px solid #e2e8f0;
+  padding: 1rem 1.5rem;
+}
+
+.badge {
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+}
+
+.alert {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+}
+
+.breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb-item a {
+  color: var(--color-text-light);
+  text-decoration: none;
+}
+
+.breadcrumb-item.active {
+  color: var(--color-dark);
+  font-weight: 500;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-light);
+  background: var(--color-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
+  background: var(--color-primary);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-secondary);
-}
-
-/* ============================================
-   MODO OSCURO
-   ============================================ */
-
-body.dark-mode {
-  --color-primary: #8a3f47;
-  --color-secondary: #b05b3c;
-  --color-accent: #c07c5f;
-  --color-light: #2d2d2d;
-  --color-dark: #1a1a1a;
-  
-  --bg-primary: #8a3f47;
-  --bg-secondary: #b05b3c;
-  --bg-light: #1a1a1a;
-  --bg-dark: #0d0d0d;
-  --bg-card: #2d2d2d;
-  
-  --text-primary: #e0e0e0;
-  --text-secondary: #d4a99c;
-  --text-light: #f5f5f5;
-  --text-muted: #a0a0a0;
-  
-  --border-color: rgba(255, 255, 255, 0.1);
+  background: var(--color-primary-dark);
 }
 
 body.dark-mode {
-  background-color: var(--bg-light);
-  color: var(--text-primary);
-}
+  --color-primary: #60a5fa;
+  --color-primary-light: #93c5fd;
+  --color-primary-dark: #3b82f6;
 
-body.dark-mode .card {
-  background-color: var(--bg-card);
-  color: var(--text-primary);
-}
+  --color-secondary: #a78bfa;
+  --color-secondary-light: #c4b5fd;
+  --color-secondary-dark: #8b5cf6;
 
-body.dark-mode .table {
-  background-color: var(--bg-card);
-  color: var(--text-primary);
+  --color-accent: #22d3ee;
+  --color-accent-light: #67e8f9;
+
+  --color-light: #334155;
+  --color-dark: #f1f5f9;
+  --color-text: #f1f5f9;
+  --color-text-light: #cbd5e1;
+
+  --bg-body: #0f172a;
+  --bg-card: #1e293b;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
 }
 
 body.dark-mode .table thead {
-  background-color: var(--bg-dark);
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+  color: var(--color-dark);
 }
 
 body.dark-mode .form-control,
 body.dark-mode .form-select {
-  background-color: var(--bg-dark);
-}
-/* ============================================
-   MODO OSCURO
-   ============================================ */
-
-body.dark-mode {
-  /* Colores ajustados para modo oscuro */
-  --color-primary: #8a3f47;
-  --color-secondary: #b05b3c;
-  --color-accent: #c07c5f;
-  --color-light: #2d2d2d;
-  --color-dark: #1a1a1a;
-  
-  /* Fondos */
-  --bg-primary: #8a3f47;
-  --bg-secondary: #b05b3c;
-  --bg-light: #1a1a1a;
-  --bg-dark: #0d0d0d;
-  --bg-card: #2d2d2d;
-  
-  /* Texto */
-  --text-primary: #e0e0e0;
-  --text-secondary: #d4a99c;
-  --text-light: #f5f5f5;
-  --text-muted: #a0a0a0;
-  
-  /* Bordes */
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Aplicar estilos al body en modo oscuro */
-body.dark-mode {
-  background-color: var(--bg-light);
-  color: var(--text-primary);
-}
-
-/* Cards en modo oscuro */
-body.dark-mode .card {
-  background-color: var(--bg-card);
-  color: var(--text-primary);
-  border-color: var(--border-color);
-}
-
-/* Tablas en modo oscuro */
-body.dark-mode .table {
-  background-color: var(--bg-card);
-  color: var(--text-primary);
-  border-color: var(--border-color);
-}
-
-body.dark-mode .table thead {
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-}
-
-body.dark-mode .table tbody tr {
-  border-color: var(--border-color);
-}
-
-body.dark-mode .table-hover tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* Formularios en modo oscuro */
-body.dark-mode .form-control,
-body.dark-mode .form-select {
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
-  border-color: var(--border-color);
+  background-color: #0f172a;
+  border-color: #475569;
+  color: var(--color-text);
 }
 
 body.dark-mode .form-control:focus,
 body.dark-mode .form-select:focus {
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 0.25rem rgba(202, 117, 95, 0.25);
+  background-color: #0f172a;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
 }
 
-body.dark-mode .form-control::placeholder {
-  color: var(--text-muted);
-}
-
-/* Modales en modo oscuro */
 body.dark-mode .modal-content {
   background-color: var(--bg-card);
-  color: var(--text-primary);
-  border-color: var(--border-color);
+  color: var(--color-text);
 }
 
-body.dark-mode .modal-header {
-  border-bottom-color: var(--border-color);
-}
-
+body.dark-mode .modal-header,
 body.dark-mode .modal-footer {
-  border-top-color: var(--border-color);
+  border-color: #475569;
 }
 
-body.dark-mode .modal-header.bg-danger {
-  background-color: #7f1d1d !important;
-}
-
-/* Breadcrumbs en modo oscuro */
 body.dark-mode .breadcrumb-item a {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 body.dark-mode .breadcrumb-item.active {
-  color: var(--text-muted);
+  color: var(--color-text-light);
 }
 
-/* Alertas en modo oscuro */
-body.dark-mode .alert-info {
-  background-color: #1e3a5f;
-  border-color: #2c5282;
-  color: #90cdf4;
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: var(--color-dark);
 }
 
-body.dark-mode .alert-success {
-  background-color: #1e4620;
-  border-color: #2d6930;
-  color: #9ae6b4;
+body.dark-mode .card {
+  border-color: #334155;
 }
 
-body.dark-mode .alert-warning {
-  background-color: #5f4c1e;
-  border-color: #856f2c;
-  color: #f6e05e;
-}
-
-body.dark-mode .alert-danger {
-  background-color: #5f1e1e;
-  border-color: #7f2c2c;
-  color: #fc8181;
-}
-
-/* Badges en modo oscuro */
 body.dark-mode .badge {
-  background-color: var(--color-accent) !important;
+  background-color: var(--color-primary) !important;
 }
-
-/* Paginación en modo oscuro */
-body.dark-mode .pagination .page-link {
-  background-color: var(--bg-card);
-  color: var(--text-primary);
-  border-color: var(--border-color);
-}
-
-body.dark-mode .pagination .page-item.active .page-link {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
-}
-
-body.dark-mode .pagination .page-link:hover {
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-}
-
-/* Action cards en modo oscuro */
-body.dark-mode .action-card {
-  background-color: var(--bg-card);
-  border-color: var(--border-color);
-}
-
-body.dark-mode .action-card:hover {
-  background: var(--bg-dark);
-  border-color: var(--color-primary);
-}
-
-/* Stat cards en modo oscuro - mantener colores originales */
-body.dark-mode .stat-card {
-  /* No cambiar, se ven bien con sus colores originales */
-}
-
-/* Recent book cards en modo oscuro */
-body.dark-mode .recent-book-card {
-  background-color: var(--bg-card);
-  border-color: var(--border-color);
-}
-
-/* User info card en modo oscuro - mantener gradiente original */
-body.dark-mode .user-info-card {
-  /* Mantener el gradiente original que se ve bien */
-} 

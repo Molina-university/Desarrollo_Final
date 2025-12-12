@@ -1,32 +1,37 @@
 <template>
-  <div class="sidebar" :class="{ 'sidebar-hidden': !isOpen }">
-    <!-- Botón toggle para móvil -->
+  <div class="sidebar" :class="{ 'sidebar-collapsed': !isOpen }">
     <button class="sidebar-toggle" @click="toggleSidebar">
-      {{ isOpen ? '◀' : '▶' }}
+      <i :class="isOpen ? 'bi bi-chevron-left' : 'bi bi-chevron-right'"></i>
     </button>
     
-    <div class="sidebar-header p-3">
-      <h5>📖 Menú</h5>
+    <div class="sidebar-header">
+      <i class="bi bi-grid-fill"></i>
+      <span v-if="isOpen">Menú</span>
     </div>
+    
     <ul class="nav flex-column">
       <li class="nav-item">
         <router-link to="/dashboard" class="nav-link" active-class="active" exact>
-          <i>🏠</i> Dashboard
+          <i class="bi bi-house-door-fill"></i>
+          <span v-if="isOpen">Dashboard</span>
         </router-link>
       </li>
       <li class="nav-item">
         <router-link to="/dashboard/productos" class="nav-link" active-class="active">
-          <i>📚</i> Libros
+          <i class="bi bi-box-seam-fill"></i>
+          <span v-if="isOpen">Productos</span>
         </router-link>
       </li>
       <li class="nav-item">
         <router-link to="/dashboard/clientes" class="nav-link" active-class="active">
-          <i>👥</i> Clientes
+          <i class="bi bi-people-fill"></i>
+          <span v-if="isOpen">Clientes</span>
         </router-link>
       </li>
       <li class="nav-item">
         <router-link to="/dashboard/valoraciones" class="nav-link" active-class="active">
-          <i>⭐</i> Valoraciones
+          <i class="bi bi-star-fill"></i>
+          <span v-if="isOpen">Valoraciones</span>
         </router-link>
       </li>
     </ul>
@@ -44,10 +49,10 @@ export default {
   methods: {
     toggleSidebar() {
       this.isOpen = !this.isOpen
+      this.$emit('sidebar-toggle', this.isOpen)
     }
   },
   mounted() {
-    // Cerrar automáticamente en pantallas pequeñas
     if (window.innerWidth < 768) {
       this.isOpen = false
     }
@@ -64,54 +69,89 @@ export default {
   left: 0;
   padding-top: 56px;
   z-index: 100;
-  background-color: var(--color-dark);
-  transition: transform 0.3s ease;
+  background: linear-gradient(180deg, var(--color-dark) 0%, #0f172a 100%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-lg);
 }
 
-.sidebar-hidden {
-  transform: translateX(-250px);
+.sidebar-collapsed {
+  width: 70px;
 }
 
 .sidebar-toggle {
   position: absolute;
-  right: -30px;
+  right: -15px;
   top: 70px;
-  background-color: var(--color-primary);
+  background: var(--color-primary);
   color: white;
   border: none;
-  padding: 10px 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   cursor: pointer;
-  border-radius: 0 5px 5px 0;
   z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
 }
 
 .sidebar-toggle:hover {
-  background-color: var(--color-primary-light);
+  background: var(--color-primary-light);
+  transform: scale(1.1);
 }
 
 .sidebar-header {
+  padding: 1.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--color-light);
+  color: white;
+  font-weight: 600;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sidebar-header i {
+  font-size: 1.25rem;
+}
+
+.sidebar-collapsed .sidebar-header {
+  justify-content: center;
 }
 
 .nav-link {
   color: rgba(255, 255, 255, 0.7);
-  padding: 12px 20px;
-  transition: all 0.3s;
+  padding: 0.875rem 1.25rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  border-left: 3px solid transparent;
 }
 
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-.nav-link.active {
-  background-color: var(--color-primary);
-  color: white;
+.sidebar-collapsed .nav-link {
+  justify-content: center;
+  padding: 0.875rem;
 }
 
 .nav-link i {
-  margin-right: 8px;
+  font-size: 1.25rem;
+  min-width: 1.25rem;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-left-color: var(--color-primary);
+}
+
+.nav-link.active {
+  background: linear-gradient(90deg, var(--color-primary) 0%, transparent 100%);
+  color: white;
+  border-left-color: var(--color-accent);
 }
 
 @media (max-width: 768px) {
@@ -119,11 +159,11 @@ export default {
     transform: translateX(-250px);
   }
   
-  .sidebar.sidebar-hidden {
-    transform: translateX(-250px);
+  .sidebar.sidebar-collapsed {
+    transform: translateX(-70px);
   }
   
-  .sidebar:not(.sidebar-hidden) {
+  .sidebar:not(.sidebar-collapsed) {
     transform: translateX(0);
   }
 }

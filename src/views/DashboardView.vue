@@ -1,21 +1,15 @@
 <template>
   <div class="dashboard-layout">
-    <!-- Navbar superior -->
     <NavbarComponent :usuario-nombre="usuarioNombre" />
 
-    <!-- Contenedor principal -->
     <div class="main-container">
-      <!-- Sidebar lateral -->
-      <SidebarComponent />
+      <SidebarComponent @sidebar-toggle="handleSidebarToggle" />
 
-      <!-- Contenido principal -->
-      <main class="content">
+      <main class="content" :class="{ 'content-expanded': !sidebarOpen }">
         <div class="container-fluid py-4">
-          <!-- Aquí se cargan las vistas hijas -->
           <router-view />
         </div>
 
-        <!-- Footer -->
         <FooterComponent />
       </main>
     </div>
@@ -36,20 +30,27 @@ export default {
   },
   data() {
     return {
-      usuarioNombre: 'Usuario'
+      usuarioNombre: 'Usuario',
+      sidebarOpen: true
+    }
+  },
+  methods: {
+    handleSidebarToggle(isOpen) {
+      this.sidebarOpen = isOpen
     }
   },
   mounted() {
-    // Verificar si hay usuario logueado
     const usuario = localStorage.getItem('usuario')
 
     if (!usuario) {
-      // Si no hay usuario, redirigir al login
       this.$router.push('/login')
     } else {
-      // Cargar nombre del usuario
       const usuarioObj = JSON.parse(usuario)
       this.usuarioNombre = usuarioObj.nombre
+    }
+
+    if (window.innerWidth < 768) {
+      this.sidebarOpen = false
     }
   }
 }
@@ -65,19 +66,28 @@ export default {
 .main-container {
   display: flex;
   flex: 1;
-  padding-top: 56px; /* Altura del navbar */
+  padding-top: 56px;
 }
 
 .content {
   flex: 1;
-  margin-left: 250px; /* Ancho del sidebar */
+  margin-left: 250px;
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 56px);
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-expanded {
+  margin-left: 70px;
 }
 
 @media (max-width: 768px) {
   .content {
+    margin-left: 0;
+  }
+  
+  .content-expanded {
     margin-left: 0;
   }
 }

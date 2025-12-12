@@ -1,9 +1,11 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        📚 Librería Online
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <i class="bi bi-book-fill"></i>
+        <span>Librería Online</span>
       </a>
+      
       <button
         class="navbar-toggler"
         type="button"
@@ -12,30 +14,30 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-center">
-          <!-- Botón de modo oscuro -->
-          <li class="nav-item me-3">
+        <ul class="navbar-nav ms-auto align-items-center gap-2">
+          <li class="nav-item">
             <button
-              class="btn btn-sm btn-outline-light dark-mode-toggle"
+              class="btn btn-sm btn-outline-light"
               @click="toggleDarkMode"
               :title="darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'"
             >
-              {{ darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro' }}
+              <i :class="darkMode ? 'bi bi-sun-fill' : 'bi bi-moon-fill'"></i>
             </button>
           </li>
           
-          <!-- Nombre del usuario -->
-          <li class="nav-item me-3">
-            <span class="nav-link text-white">
-              👤 {{ usuarioNombre }}
-            </span>
+          <li class="nav-item">
+            <div class="user-info">
+              <i class="bi bi-person-circle"></i>
+              <span>{{ usuarioNombre }}</span>
+            </div>
           </li>
           
-          <!-- Botón cerrar sesión -->
           <li class="nav-item">
-            <button class="btn btn-outline-light btn-sm" @click="cerrarSesion">
-              🚪 Cerrar Sesión
+            <button class="btn btn-sm btn-outline-light" @click="cerrarSesion">
+              <i class="bi bi-box-arrow-right me-1"></i>
+              Salir
             </button>
           </li>
         </ul>
@@ -59,7 +61,6 @@ export default {
     }
   },
   mounted() {
-    // Cargar preferencia de modo oscuro desde localStorage
     const savedDarkMode = localStorage.getItem('darkMode')
     if (savedDarkMode === 'true') {
       this.darkMode = true
@@ -87,31 +88,72 @@ export default {
 </script>
 
 <style scoped>
+.navbar {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  box-shadow: var(--shadow-md);
+  padding: 0.75rem 0;
+}
+
 .navbar-brand {
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 1.375rem;
+  transition: var(--transition);
+}
+
+.navbar-brand:hover {
+  transform: scale(1.02);
+}
+
+.navbar-brand i {
   font-size: 1.5rem;
 }
 
-.navbar {
-  background-color: var(--color-primary) !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  padding: 0.375rem 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  font-weight: 500;
 }
 
-.dark-mode-toggle {
-  transition: all 0.3s ease;
+.user-info i {
+  font-size: 1.25rem;
 }
 
-.dark-mode-toggle:hover {
-  transform: scale(1.05);
+.btn-outline-light {
+  border-width: 2px;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.btn-outline-light:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 @media (max-width: 991px) {
   .navbar-nav {
     padding-top: 1rem;
+    gap: 0.75rem !important;
   }
   
   .nav-item {
-    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  
+  .btn, .user-info {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .navbar-collapse {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    margin-top: 0.5rem;
   }
 }
 </style>

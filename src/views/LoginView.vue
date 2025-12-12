@@ -2,14 +2,17 @@
   <div class="login-container">
     <div class="login-card">
       <div class="text-center mb-4">
-        <h1 class="display-4">📚</h1>
+        <div class="login-icon mb-3">
+          <i class="bi bi-book-fill"></i>
+        </div>
         <h2>Librería Online</h2>
         <p class="text-muted">Inicia sesión para continuar</p>
       </div>
 
       <!-- Alerta de error -->
       <div v-if="error" class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>❌ Error:</strong> {{ error }}
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <strong>Error:</strong> {{ error }}
         <button type="button" class="btn-close" @click="error = ''"></button>
       </div>
 
@@ -46,7 +49,7 @@
               @click="mostrarPassword = !mostrarPassword"
               tabindex="-1"
             >
-              {{ mostrarPassword ? '👁️' : '👁️‍🗨️' }}
+              <i :class="mostrarPassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'"></i>
             </button>
           </div>
         </div>
@@ -63,7 +66,7 @@
       <!-- Información de usuarios de prueba -->
       <div class="mt-4 p-3 bg-light rounded">
         <small class="text-muted">
-          <strong>👤 Usuarios de prueba:</strong><br />
+          <strong><i class="bi bi-info-circle-fill me-1"></i> Usuarios de prueba:</strong><br />
           • admin / admin123<br />
           • usuario / user123
         </small>
@@ -150,6 +153,21 @@ export default {
 .login-card h2 {
   color: #333;
   font-weight: bold;
+}
+
+.login-icon {
+  font-size: 4rem;
+  color: var(--color-primary);
+}
+
+.login-icon i {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .password-input-group {
